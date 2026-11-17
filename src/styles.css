@@ -1,0 +1,117 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --color-paper: #f6f5f1;
+  --color-ink: #0e1513;
+  --color-ink-soft: #1c2723;
+  --color-muted: #66706b;
+  --color-line: #e4e1d9;
+  --color-brand: #0f766e;
+  --color-brand-soft: #e3f3f0;
+  --color-accent: #f59e0b;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-paper font-sans text-ink antialiased;
+}
+
+.container-x {
+  @apply mx-auto max-w-6xl px-6;
+}
+
+.eyebrow {
+  @apply font-mono text-xs font-medium uppercase tracking-[0.18em] text-brand;
+}
+
+.h1 {
+  @apply text-4xl font-extrabold tracking-tight text-ink md:text-5xl;
+}
+
+.h2 {
+  @apply text-3xl font-extrabold tracking-tight text-ink md:text-4xl;
+}
+
+.lead {
+  @apply text-lg leading-relaxed text-muted;
+}
+
+.hero-glow {
+  background-image:
+    radial-gradient(circle at 88% 6%, rgba(20, 184, 166, 0.16), transparent 40%),
+    radial-gradient(circle at 6% 94%, rgba(245, 158, 11, 0.12), transparent 36%);
+}
+
+.card {
+  @apply block rounded-2xl border border-line bg-white p-6 transition duration-300;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 20px 40px -20px rgba(14, 21, 19, 0.25);
+}
+
+.pill {
+  @apply inline-flex items-center rounded-full border border-line bg-white px-3 py-1 text-xs font-medium text-ink/80;
+}
+
+.btn-ink,
+.btn-line,
+.btn-brand,
+.btn-light {
+  @apply inline-flex items-center justify-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold transition duration-200;
+}
+
+.btn-ink {
+  @apply bg-ink text-white;
+}
+.btn-ink:hover {
+  background-color: var(--color-ink-soft);
+}
+
+.btn-line {
+  @apply border border-line bg-white text-ink;
+}
+.btn-line:hover {
+  border-color: var(--color-ink);
+}
+
+.btn-brand {
+  @apply bg-white text-brand;
+}
+.btn-brand:hover {
+  background-color: var(--color-brand-soft);
+}
+
+.btn-light {
+  @apply border border-white/30 text-white;
+}
+.btn-light:hover {
+  border-color: rgba(255, 255, 255, 0.7);
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: none; }
+}
+
+.fade-up {
+  animation: fade-up 0.7s ease-out backwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fade-up { animation: none; }
+  html { scroll-behavior: auto; }
+}
+
+/* Angular Material buttons, focus rings and form fields use these tokens */
+html {
+  --mat-sys-primary: #0f766e;
+  --mat-sys-on-primary: #ffffff;
+}
