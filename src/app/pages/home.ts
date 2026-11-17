@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { CareerChartsComponent } from '../components/career-charts/career-charts';
+import { EDUCATION } from '../data/education.data';
 import { PROFILE, PROJECTS } from '../data/portfolio.data';
 import { slugOf } from '../data/slug';
 
@@ -119,6 +120,23 @@ const IMPACT = [
     </section>
 
     <section class="container-x pb-24">
+      <p class="eyebrow">Education</p>
+      <h2 class="h2 mt-3">Academic background</h2>
+      <div class="mt-10 grid gap-6 md:grid-cols-2">
+        @for (item of education; track item.degree) {
+          <div class="card">
+            <p class="font-mono text-xs uppercase tracking-wider text-brand">{{ item.period }}</p>
+            <h3 class="mt-3 text-lg font-bold text-ink">{{ item.degree }}</h3>
+            <p class="mt-2 text-muted">{{ item.school }}</p>
+            @if (item.grade) {
+              <span class="pill mt-5">{{ item.grade }}</span>
+            }
+          </div>
+        }
+      </div>
+    </section>
+
+    <section class="container-x pb-24">
       <div class="rounded-3xl bg-brand px-8 py-16 text-center text-white md:px-16">
         <h2 class="text-3xl font-extrabold tracking-tight md:text-4xl">Let's build something useful</h2>
         <p class="mx-auto mt-4 max-w-xl text-white/80">Open to backend and full-stack roles, and to freelance work on Angular, React and Spring Boot systems.</p>
@@ -134,6 +152,7 @@ export class HomePage {
   readonly profile = PROFILE;
   readonly impact = IMPACT;
   readonly snippet = KAFKA_SNIPPET;
+  readonly education = EDUCATION;
   readonly featured = PROJECTS.find((p) => p.title === 'Trading Dashboard');
   readonly slug = slugOf;
 }

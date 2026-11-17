@@ -152,12 +152,24 @@ export const PROJECTS = [
     tech: ['Java', 'Spring Boot', 'Kafka', 'Redis', 'PostgreSQL', 'Docker', 'React', 'TypeScript', 'WebSockets'],
     link: 'https://github.com/abhinav91a/FlashCart',
   },
+  {
+    title: 'Ontology Alignment with LogMapBio+',
+    shortName: 'ontology-alignment',
+    period: 'Oct 2024 – Feb 2026',
+    from: at(2024, 10),
+    to: at(2026, 2),
+    summary: 'A two-phase alignment pipeline. LogMapBio produces the initial mappings, and SBERT transformer models validate them semantically, catching mappings that string matching misses.',
+    points: [
+    ],
+    tech: ['Java', 'Spring Boot', 'logMapBio+', 'logmap', 'Sbert', 'python', 'SPARQL', 'BioPortal', 'OWL API'],
+    link: 'https://github.com/abhinav91a/ontology-alignment',
+  },
 ];
 
 // Chart rows: roles oldest first (dark), then projects oldest first (blue)
 export const TIMELINE = [
-  ...[...ROLES].reverse().map((r) => ({ label: r.shortName, start: r.from, end: r.to, color: '#0e1513' })),
-  ...[...PROJECTS].reverse().map((p) => ({ label: p.shortName, start: p.from, end: p.to, color: '#0f766e' })),
+    ...[...PROJECTS].map((p) => ({ label: p.shortName, start: p.from, end: p.to, color: '#0f766e' })),
+  ...[...ROLES].map((r) => ({ label: r.shortName, start: r.from, end: r.to, color: '#0e1513' })),
 ];
 
 // Items listed per area in the CV, so the counts match the CV
